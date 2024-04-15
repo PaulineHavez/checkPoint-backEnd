@@ -38,6 +38,21 @@ class Country extends BaseEntity {
     const savedCountry = await newCountry.save();
     return savedCountry;
   }
+
+  static async getCountries(): Promise<Country[]> {
+    const countries = await Country.find();
+    return countries;
+  }
+
+  static async getCountryById(id: string): Promise<Country> {
+    const country = await Country.findOne({
+      where: { id: parseInt(id, 10) },
+    });
+    if (!country) {
+      throw new Error(`Country with ID ${id} does not exist.`);
+    }
+    return country;
+  }
 }
 
 export default Country;
