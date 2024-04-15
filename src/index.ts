@@ -2,8 +2,8 @@ import { ApolloServer } from "@apollo/server";
 import Country from "./country";
 import { DataSource } from "typeorm";
 import { startStandaloneServer } from "@apollo/server/standalone";
-import { Query, buildSchema } from "type-graphql";
-import CountryResolver from "./countryResolver";
+import { buildSchema } from "type-graphql";
+import CountryResolver from "./CountryResolver";
 
 async function Database() {
   const dataSource = new DataSource({
