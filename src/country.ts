@@ -9,11 +9,11 @@ class Country extends BaseEntity {
   @Field(() => ID)
   id!: number;
 
-  @Column()
+  @Column({ unique: true })
   @Field()
   name!: string;
 
-  @Column()
+  @Column({ unique: true })
   @Field()
   code!: string;
 
@@ -44,14 +44,11 @@ class Country extends BaseEntity {
     return countries;
   }
 
-  static async getCountryById(id: string): Promise<Country> {
-    const country = await Country.findOne({
-      where: { id: parseInt(id, 10) },
+  static async getCountryByCode(code?: string): Promise<Country[]> {
+    const countries = await Country.find({
+      where: { code },
     });
-    if (!country) {
-      throw new Error(`Country with ID ${id} does not exist.`);
-    }
-    return country;
+    return countries;
   }
 }
 

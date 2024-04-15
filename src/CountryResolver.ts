@@ -8,8 +8,8 @@ class CountryResolver {
   }
 
   @Query(() => Country)
-  country(@Arg("id", () => ID) id: string) {
-    return Country.getCountryById(id);
+  countryByCode(@Arg("code") code: string) {
+    return Country.getCountryByCode(code);
   }
 
   @Mutation(() => Country)
