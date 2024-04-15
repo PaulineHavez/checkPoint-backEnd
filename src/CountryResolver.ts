@@ -7,6 +7,11 @@ class CountryResolver {
     return Country.getCountries();
   }
 
+  @Query(() => [Country])
+  countriesByContinentCode(@Arg("continentCode") continentCode: string) {
+    return Country.getCountriesByContinentCode(continentCode ?? undefined);
+  }
+
   @Query(() => Country)
   countryByCode(@Arg("code") code: string) {
     return Country.getCountryByCode(code);

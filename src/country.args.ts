@@ -1,5 +1,4 @@
-import { Field, Float, Int, ArgsType } from "type-graphql";
-// import { Min, MinLength } from "class-validator";
+import { Field, ArgsType, ID } from "type-graphql";
 
 @ArgsType()
 export class CreateOrUpdateCountry {
@@ -11,4 +10,7 @@ export class CreateOrUpdateCountry {
 
   @Field()
   emoji!: string;
+
+  @Field(() => ID)
+  continentId!: number;
 }
